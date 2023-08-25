@@ -1,0 +1,28 @@
+Exercice 5.1: 
+
+Quelques primitives systèmes : write, read, open, close, lseek.
+fopen n'est pas une primitive système, c'est une fonction de bibliothèque.
+
+Les fonctions de bibliothèques:
+- utilisent des descripteurs comme FILE *, 
+- utilisation de getc\putc simple, 
+- possibilité d'utilisation d'autres fonctions (printf, puts, ect ..), 
+- utilisent des primitives systèmes (haut niveau),
+- le code ajouté au programme est effectué lors de l'édition de lien. 
+Le but prinicpal est d'aider à la programmation.
+Les primitives sytèmes, elles:
+- utilisent des descripteurs comme int, 
+- des paramètres de read\write moins simples,
+- uniquement utilisation de read ou write,
+- l'interface est de plus bas niveau,
+- le code est dans le noyau. 
+Le but principal est de sécuriser les données.
+
+Exercice 5.2:
+
+Non, elle ne peut pas fonctionner, plusieurs erreurs sont présentes :
+- les arguments de open sont faux : le deuxième doit être un int (flag)
+- on renvoie un descripteur int avec fd = open(...)
+- int c; doit être remplacé par char c (=1 octet) ou d'un unsigned c (=32 bits), mais utilisé un char dans le cas présent est plus judicieux
+- pas de vérification des erreurs : if(fp==1) then perror(open(...); exit(1));
+
